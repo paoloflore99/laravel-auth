@@ -11,14 +11,18 @@ class ProjectController extends Controller
 {
 
     
+
+    
     public function index(){
 
+        //mostrera tutti i progetti
         $projects = Project::all();
         return view("admin.projects.index" , compact("projects"));
     }
 
 
 
+    //mostrera i detagli di ogni progetto 
     public function show($id){
         return view("admin.projects.show" , compact("projects"));
     }
@@ -26,21 +30,26 @@ class ProjectController extends Controller
 
 
 
+    //mostrera il form per la creazioni di nuovi progetti 
     public function create(){
         return view("admin.projects.create");
     }
 
 
 
+
+
+    //permettera di salvare i progetti del create
     public function store(Request $request){
         $data = $request->validate([
 
-                'title'=> 'required',
+                'title'=> 'required|max:255',
                 'img'=> 'required',
-                'description'=> 'required',
+                'description'=> 'required|max:255',
         ]);
 
+        //il creare esegue il fill e il save 
         $project = Project::create($data);
-        return redirect()->route("admin.projects.index")->with("creazione" , "creazione completata");
+        return redirect()->route("admin.projects.show");
     }
 }

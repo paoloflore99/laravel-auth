@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,26 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+//creazione gruppi middleware
+//controllo della registrazione , per accedere alla rotte
+route::middleware(['auth', 'verified'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        
+    Route::get("/projects/create", [ProjectController::class, "create"])->name("projects.create");
+    Route::post("/projects", [ProjectController::class, "store"])->name("projects.store");
+    Route::get("/projects", [ProjectController::class, "index"])->name("projects.index");
+    Route::get("/projects/{post}", [ProjectController::class, "show"])->name("projects.show");
+});
+
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin.profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
