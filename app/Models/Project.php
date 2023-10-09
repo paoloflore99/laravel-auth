@@ -8,5 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    
+
+    protected $casts = [
+
+        'dete' => 'detetime'
+    ];
+
+    protected $fillablesa = [
+
+        'title',
+        'img',
+        'description'
+
+    ];
 }
