@@ -7,6 +7,8 @@
 
             <img src="{{ $project->img  }}" alt="">
             <p>{{ $project->description }}</p>
+            <p>{{ $project->deta }}</p>
+            <p>{{ $project->programming_languages}}</p>
         </div>
     </div>
 

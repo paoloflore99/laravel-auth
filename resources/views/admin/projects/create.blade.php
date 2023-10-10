@@ -7,8 +7,8 @@
         <div class="row">
             <h1>create</h1>
 
-            <form action="{{ route('admin.projects.store')}}" method="Post">
-            @csrf
+            <form action="{{ route('admin.projects.store')}}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label for="" class="form-lable">title</label>
                     <input name="title" type="text" class="form-control">
@@ -26,11 +26,15 @@
 
                 <div class="mb-3">
                     <label  class="form-lable">date</label>
-                    <input name="date" type="date" class="form-control">
+                    <input name="dete" type="date" class="form-control">
+                </div>	
+
+
+                <div class="mb-3">
+                    <label  class="form-lable">languages</label>
+                    <input name="programming_languages"  class="form-control">
                 </div>
-
-
-                <button type="button" class="btn bg-primary">invio</button>
+                <button  class="btn bg-primary">invio</button>
             </form>
         </div>
     </div>

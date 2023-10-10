@@ -20,12 +20,17 @@ class ProjectController extends Controller
         return view("admin.projects.index" , compact("projects"));
     }
 
-
+    
 
     //mostrera i detagli di ogni progetto 
+    // public function show($id){
+    //     return view("admin.projects.show" , compact("projects"));
+    // }
     public function show($id){
+        $project = Project::find($id);
         return view("admin.projects.show" , compact("projects"));
     }
+    
 
 
 
@@ -46,10 +51,18 @@ class ProjectController extends Controller
                 'title'=> 'required|max:255',
                 'img'=> 'required|image|max:5120',
                 'description'=> 'required|max:255',
+                'dete'=> 'date'
         ]);
-
+        
         //il creare esegue il fill e il save 
         $project = Project::create($data);
-        return redirect()->route("admin.projects.show");
+        return redirect()->route('admin.projects.show', $project->id);
+
+    }
+
+
+    //edit
+    public function edit(){
+        return view('admin.projects.edit' ,);
     }
 }
