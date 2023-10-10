@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $data = $request->validate([
 
                 'title'=> 'required|max:255',
-                'img'=> 'required',
+                'img'=> 'required|image|max:5120',
                 'description'=> 'required|max:255',
         ]);
 
