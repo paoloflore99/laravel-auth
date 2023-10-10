@@ -52,6 +52,9 @@
                         <li>
                             <a class="nav-link" href="{{route('admin.projects.create') }}">{{ __('Create') }}</a>
                         </li>
+                        {{-- <li>
+                            <a class="nav-link" href="{{route('admin.projects.show') }}">{{ __('Create') }}</a>
+                        </li> --}}
 
                     </ul>
 

@@ -21,18 +21,14 @@ class ProjectController extends Controller
     }
 
     
-
     //mostrera i detagli di ogni progetto 
-    // public function show($id){
-    //     return view("admin.projects.show" , compact("projects"));
-    // }
     public function show($id){
         $project = Project::find($id);
         return view("admin.projects.show" , compact("projects"));
     }
     
 
-
+    
 
 
     //mostrera il form per la creazioni di nuovi progetti 
@@ -57,7 +53,6 @@ class ProjectController extends Controller
         //il creare esegue il fill e il save 
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project->id);
-
     }
 
 

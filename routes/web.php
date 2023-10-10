@@ -38,12 +38,9 @@ route::middleware(['auth', 'verified'])
     Route::post("/projects", [ProjectController::class, "store"])->name("projects.store");
 
     Route::get("/projects/{id}", [ProjectController::class, "show"])->name("projects.show");
+
     Route::get("/projects", [ProjectController::class, "index"])->name("projects.index");
-
-    // Route::patch("/projects{project}", [ProjectController::class, "update"])->name("projects.update");
     Route::patch("/projects/{project}", [ProjectController::class, "update"])->name("projects.update");
-
-    
 
     Route::get("/projects/{project}/edit", [ProjectController::class, "edit"])->name("projects.edit");
     Route::delete("/projects/{project}", [ProjectController::class, "destroy"])->name("projects.destroy");
