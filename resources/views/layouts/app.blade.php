@@ -53,11 +53,9 @@
                             <a class="nav-link" href="{{route('admin.projects.create') }}">{{ __('Create') }}</a>
                         </li>
                         {{-- <li>
-                            <a class="nav-link" href="{{route('admin.projects.show') }}">{{ __('Create') }}</a>
+                            <a class="nav-link" href="{{ route('admin.prova.show', ['id' => $id]) }}">{{ __('Show') }}</a>
                         </li> --}}
-
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

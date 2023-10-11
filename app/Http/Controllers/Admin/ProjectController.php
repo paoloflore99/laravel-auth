@@ -24,7 +24,7 @@ class ProjectController extends Controller
     //mostrera i detagli di ogni progetto 
     public function show($id){
         $project = Project::find($id);
-        return view("admin.projects.show" , compact("projects"));
+        return view("admin.projects.show" , compact("project"));
     }
     
 
@@ -47,9 +47,11 @@ class ProjectController extends Controller
                 'title'=> 'required|max:255',
                 'img'=> 'required|image|max:5120',
                 'description'=> 'required|max:255',
-                'dete'=> 'date'
+                'dete'=> 'date',
+                'programming_languages' => 'required|max:255'
         ]);
         
+        dd($data);
         //il creare esegue il fill e il save 
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project->id);
