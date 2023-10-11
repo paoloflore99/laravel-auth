@@ -45,13 +45,14 @@ class ProjectController extends Controller
         $data = $request->validate([
 
                 'title'=> 'required|max:255',
-                'img'=> 'required|image|max:5120',
+                // 'img'=> 'required|image|max:5120',
+                'img'=>'required||active_url|max:5120',
                 'description'=> 'required|max:255',
                 'dete'=> 'date',
                 'programming_languages' => 'required|max:255'
         ]);
         
-        dd($data);
+        // dd($data);
         //il creare esegue il fill e il save 
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project->id);
