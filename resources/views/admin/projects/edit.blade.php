@@ -48,7 +48,6 @@
                 @enderror
             </div>
 
-            {{-- <a href="{{route('admin.projects.edit') }}">edit</a> --}}
             <button class="btn bg-primary">invio</button>
         </form>
     </div>

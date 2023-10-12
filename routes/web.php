@@ -61,3 +61,6 @@ Route::middleware('auth')
 });
 
 require __DIR__.'/auth.php';
+
+
+//max_file_uploads = 20
