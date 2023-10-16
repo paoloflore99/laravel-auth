@@ -20,7 +20,11 @@
                     @foreach ($projects as $project )
                         <tr>
                             <td>{{ $project->title }}</td>
-                            <td><img class="img-index" src="{{ $project->img }}" alt=""></td>
+                            @if ($project->img)
+                                <td><img class="img-index" src="{{ $project->img }}" alt=""></td>
+                            @else
+                                <td><img class="img-index" src="https://cdn.calciomercato.com/images/2019-05/Whatsapp.senza.immagine.2019.1400x840.jpg" alt=""></td>
+                            @endif
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->dete }}</td>
                             <td>
