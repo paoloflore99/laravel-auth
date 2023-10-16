@@ -39,25 +39,26 @@ route::middleware(['auth', 'verified'])
     Route::post("/projects", [ProjectController::class, "store"])->name("projects.store");
 
     Route::get("/projects/{project}", [ProjectController::class, "show"])->name("projects.show");
-    Route::get("/projects", [ControllerProjectController::class, "index"])->name("projects.index");
+    Route::get("/projects", [ProjectController::class, "index"])->name("projects.index");
 
     Route::patch("/projects/{project}", [ProjectController::class, "update"])->name("projects.update");
 
     Route::get("/projects/{project}/edit", [ProjectController::class, "edit"])->name("projects.edit");
     Route::delete("/projects/{project}", [ProjectController::class, "destroy"])->name("projects.destroy");
-
+    // ControllersProjectController
 });
 
 //controller publico ControllersProjectController
-Route::get("/projects" ,[ControllersProjectController::class, "index"])->name("projects.index");
+// Route::get("/projects" ,[ControllersProjectController::class, "index"])->name("projects.index");
 
 
 Route::middleware('auth')
     ->prefix('/admin')
+    ->name('admin.')
     ->group(function () {
-    Route::get('profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
-    Route::patch('profile', [ProfileController::class, 'update'])->name('admin.profile.update');
-    Route::delete('profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

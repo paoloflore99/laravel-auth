@@ -8,6 +8,6 @@ class ProjectController extends Controller
 {
     //
     public function index(){
-        return view("guest.projects.index");
+        return view("admin.projects.index");
     }
 }

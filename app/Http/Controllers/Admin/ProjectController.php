@@ -23,7 +23,8 @@ class ProjectController extends Controller
     
     //mostrera i detagli di ogni progetto 
     public function show($id){
-        $project = Project::find($id);
+        $project = Project::where('id', $id)->first();
+        // dd($project);
         return view("admin.projects.show" , compact("project"));
     }
     
