@@ -28,7 +28,9 @@
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->dete }}</td>
                             <td>
-                                {{-- <a href="{{ route('admin.projects.show' $projects->slug)}}"></a> --}}
+                                <a href="{{ route('admin.projects.show' $projects->slug)}}"></a>
+                                {{-- <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}"></a> --}}
+                    
                             </td>
                         </tr>
                     @endforeach

@@ -43,16 +43,17 @@ class ProjectController extends Controller
 
     //permettera di salvare i progetti del create
     public function store(Request $request){
+        //validated ritorna i dati gia  validati del storeprojectcontroller.php
+        //la validazione la fa da Request 
+        //non va il         validated()           e lo storeProjectRequest.php 
         $data = $request->validate([
-
-                'title'=> 'required|max:255',
-                // 'img'=> 'required|image|max:5120',
-                'img'=>'required||active_url|max:5120',
-                'description'=> 'required|max:255',
-                'dete'=> 'date',
-                'programming_languages' => 'required|max:255'
+            'title'=> 'required|max:255',
+            'img'=>'required||active_url|max:5120',
+            'description'=> 'required|max:255',
+            'dete'=> 'date',
+            'programming_languages' => 'required|max:255'
         ]);
-        
+
         // dd($data);
         //il creare esegue il fill e il save 
         $project = Project::create($data);
@@ -61,7 +62,18 @@ class ProjectController extends Controller
 
 
     //edit
-    public function edit(){
-        return view('admin.projects.edit' ,);
+    public function edit($id){
+
+        $project = Project::wherw("id", $id)->firstOrFail();
+        return view('admin.projects.edit' , compact("projec"));
     }
+
+
+    public function update(Request $request, $id) {
+        $data = $request->validate();
+        $data = Project::where("id", $id)->firstOrFail();
+        $$project->update($data);
+        return redirect()->route("admin.projects.show" , $project->id);
+}
+
 }
