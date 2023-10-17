@@ -23,7 +23,7 @@ class ProjectStoreRequest extends FormRequest
     {
         return [
             'title'=> 'required|max:255',
-            'img'=>'required||active_url|max:5120',
+            'img'=>'required|active_url|max:5120',
             'description'=> 'required|max:255',
             'dete'=> 'date',
             'programming_languages' => 'required|max:255'

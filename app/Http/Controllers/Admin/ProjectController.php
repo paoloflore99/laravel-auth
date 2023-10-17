@@ -48,7 +48,7 @@ class ProjectController extends Controller
         //non va il         validated()           e lo storeProjectRequest.php 
         $data = $request->validate([
             'title'=> 'required|max:255',
-            'img'=>'required||active_url|max:5120',
+            'img'=>'required|active_url|max:5120',
             'description'=> 'required|max:255',
             'dete'=> 'date',
             'programming_languages' => 'required|max:255'
@@ -64,16 +64,24 @@ class ProjectController extends Controller
     //edit
     public function edit($id){
 
-        $project = Project::wherw("id", $id)->firstOrFail();
-        return view('admin.projects.edit' , compact("projec"));
+        $project = Project::where("id", $id)->firstOrFail();
+        return view('admin.projects.edit' , compact("project"));
     }
 
 
     public function update(Request $request, $id) {
-        $data = $request->validate();
-        $data = Project::where("id", $id)->firstOrFail();
-        $$project->update($data);
+
+        $data = $request->validate([
+            'title'=> 'required|max:255',
+            'img'=>'required|active_url|max:5120',
+            'description'=> 'required|max:255',
+            'dete'=> 'date',
+            'programming_languages' => 'required|max:255'
+        ]);
+        
+        $project = Project::where("id", $id)->firstOrFail();
+        $project->update($data);
         return redirect()->route("admin.projects.show" , $project->id);
-}
+    }
 
 }
